@@ -5,7 +5,7 @@
   --clr-primary: #6366f1;
   --clr-secondary: #10b981;
   --clr-primary-rgb: 99, 102, 241;
-  --transition-fast: 0.2s ease;
+  --transition-fast: 0.3s ease;
 }
 .footer {
   padding: 3rem 0;
@@ -47,6 +47,10 @@
 
 .footer-logo.hover-scale:hover {
   transform: scale(1.05);
+}
+
+.footer-logo img:hover {
+  transform: rotate(5deg);
 }
 
 .footer-logo img {
@@ -151,6 +155,45 @@
 .btn-gradient:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(var(--clr-primary-rgb), 0.3);
+}
+
+/* Subscription Acknowledgment Box */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+.subscription-message {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  animation: fadeInOut 2s forwards; /* Fade in and out */
+}
+
+.subscription-message.success {
+  background-color: #2a3e50;
+  color: #8aff8a;
+}
+
+.subscription-message.error {
+  background-color: #502a2a;
+  color: #ff8a8a;
 }
 
 .footer-contact {

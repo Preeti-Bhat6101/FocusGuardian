@@ -42,7 +42,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 75px;
+  height: 73px;
   max-width: 1450px;
   margin: 0 auto;
   padding: 0 1.5rem;
@@ -345,9 +345,18 @@
 
 /* Animation for logo */
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .logo-container:hover .logo-circle {

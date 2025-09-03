@@ -132,7 +132,7 @@ const HomePage = () => {
       {/* Card 1 */}
       <div className="feature-card hover-scale left-card">
         <div className="card-content">
-          <FaRegClock className="card-icon" />
+          <FaRegClock className="card-icon-v card-icon" />
           <h3 className="card-heading">Session Management</h3>
           <p className="card-text">
             Easily start, pause, and end sessions with smart AI tracking. Keep your workflow organized with automatic time logging and intuitive UI.
@@ -151,7 +151,7 @@ const HomePage = () => {
       {/* Card 2 */}
       <div className="feature-card hover-scale middle-card horizontal-card">
         <div className="horizontal-card-content">
-          <FaChartLine className="card-icon" />
+          <FaChartLine className="card-icon card-icon-h" />
           <h3 className="card-heading">Advanced Insights</h3>
           <p className="card-text">
             Unlock valuable insights into your productivity trends with deep analytics, heatmaps, and efficiency scores.
@@ -168,7 +168,7 @@ const HomePage = () => {
       {/* Card 3 */}
       <div className="feature-card hover-scale right-card">
         <div className="card-content">
-          <FaRegEye className="card-icon" />
+          <FaRegEye className="card-icon-v card-icon" />
           <h3 className="card-heading">Focus Control</h3>
           <p className="card-text">
             Maximize concentration with customizable focus sessions, intelligent interruption control, and ambient soundscapes.

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FaFacebookF,
   FaTwitter,
@@ -11,6 +11,28 @@ import {
 import './footer.css';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (email.trim() === '') {
+      setMessage('Please enter your email address.');
+      // Optional: clear message after a few seconds
+      setTimeout(() => {
+        setMessage('');
+      }, 3000);
+    } else {
+      // In a real application, you would send the email here.
+      setMessage('Thanks for subscribing! You\'ll receive updates soon.');
+      setEmail(''); // Clear the input field
+      // Optional: clear message after a few seconds
+      setTimeout(() => {
+        setMessage('');
+      }, 5000);
+    }
+  };
+
   return (
     <footer className="footer">
       <div className="container footer-grid">
@@ -35,16 +57,23 @@ const Footer = () => {
             <h3>Stay Productive</h3>
             <p>Subscribe to get tips & updates</p>
           </div>
-          <form className="newsletter-form">
+          <form className="newsletter-form" onSubmit={handleSubscribe}>
             <input 
               type="email" 
               placeholder="Enter your email" 
               aria-label="Subscribe newsletter"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <button type="submit" className="btn-gradient">
               Subscribe
             </button>
           </form>
+          {message && (
+            <div className={`subscription-message ${message.includes('Thanks') ? 'success' : 'error'}`}>
+              <p>{message}</p>
+            </div>
+          )}
         </div>
 
         <div className="footer-contact">
