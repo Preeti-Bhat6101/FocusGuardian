@@ -12,7 +12,8 @@ const {
     getSessionById,
     getDailyAnalysis,
     getDailyAppUsage,
-    activateSession // Assuming getUserStats remains in sessionController for now
+    activateSession,
+    getLiveStatus // Assuming getUserStats remains in sessionController for now
 } = require("../controllers/sessionController");
 
 const protect = require("../middleware/authMiddleware"); // Import authentication middleware
@@ -40,7 +41,7 @@ router.post("/:id/stop", stopSession); // Using :id to match stopSession's req.p
 // @desc    Get the currently active session for the logged-in user (if any)
 // @access  Private
 router.get("/current", getCurrentSession);
-
+router.get("/live-status", getLiveStatus);
 // @route   GET /api/sessions/history
 // @desc    Get the history of all completed sessions for the logged-in user
 // @access  Private

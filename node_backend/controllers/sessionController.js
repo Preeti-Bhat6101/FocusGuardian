@@ -315,26 +315,21 @@ exports.activateSession = asyncHandler(async (req, res) => {
 
 exports.getLiveStatus = asyncHandler(async (req, res) => {
     const session = await Session.findOne({ userId: req.user.id, endTime: null });
-    
     if (!session) {
-        // This is a valid state, but the frontend expects a 404. Let's keep it.
         return res.status(404).json({ message: 'No active session found' });
     }
 
-    // --- THE FIX IS HERE ---
-    // Check if the latestActivity field exists and has content.
-    // The 'service' property is a good indicator that it has been written to.
-    if (session.latestActivity && session.latestActivity.service) {
-        // If it has real data, send it.
+    // THIS IS THE CRITICAL FIX that your running code is missing.
+    // It gracefully handles the brief "initializing" state before the first data packet arrives.
+    if (session.latestActivity && session.latestActivity.service && session.latestActivity.service !== "Initializing...") {
         return res.status(200).json(session.latestActivity);
     } else {
-        // If it's empty or just has the default values, send a clear "initializing" status.
-        // This ensures the frontend ALWAYS receives a valid JSON object.
+        // This ensures a 200 OK is always sent, preventing the 400 error.
         return res.status(200).json({
             service: "Initializing...",
             productivity: "Analyzing...",
             reason: "Waiting for first data point...",
-            timestamp: new Date(), // Give a current timestamp
+            timestamp: new Date(),
         });
     }
 });

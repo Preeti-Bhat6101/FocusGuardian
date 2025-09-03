@@ -1,14 +1,14 @@
 // models/Session.js
 const mongoose = require("mongoose");
+const encrypt = require('mongoose-encryption'); // 1. Import the plugin
 
-// --- NEW: Define a sub-schema for the latestActivity object ---
-// This tells Mongoose exactly what fields to expect, which improves reliability.
+// This sub-schema is still the best way to define the object we're encrypting.
 const latestActivitySchema = new mongoose.Schema({
   service: { type: String, default: "Initializing..." },
   productivity: { type: String, default: "Analyzing..." },
   reason: { type: String, default: "Waiting for data..." },
   timestamp: { type: Date, default: Date.now },
-}, { _id: false }); // _id: false prevents Mongoose from creating a separate ID for this sub-document
+}, { _id: false });
 
 const sessionSchema = new mongoose.Schema({
   userId: {
@@ -28,12 +28,33 @@ const sessionSchema = new mongoose.Schema({
     default: {}
   },
   
-  // Use the new, more explicit sub-schema here
+  // This is the sensitive object we will encrypt.
   latestActivity: {
     type: latestActivitySchema,
-    default: () => ({}) // Use a function to create a new default object
+    default: () => ({})
   },
 
 }, { timestamps: true });
+
+// --- CONFIGURE THE ENCRYPTION PLUGIN ---
+const encKey = process.env.ENCRYPTION_KEY;
+const sigKey = process.env.SIGNING_KEY;
+
+if (!encKey || !sigKey) {
+    console.error("\nFATAL ERROR: ENCRYPTION_KEY and SIGNING_KEY must be set in your .env file.\n");
+    process.exit(1);
+}
+
+sessionSchema.plugin(encrypt, { 
+    encryptionKey: encKey, 
+    signingKey: sigKey,
+    
+    // --- SPECIFY THE ONLY FIELD TO ENCRYPT ---
+    // We are only encrypting the 'latestActivity' object.
+    fields: ['latestActivity'],
+    
+    // Good practice option
+    decryptPostSave: false
+});
 
 module.exports = mongoose.model("Session", sessionSchema);
