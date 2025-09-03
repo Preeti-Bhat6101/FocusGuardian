@@ -167,9 +167,9 @@ def main_application_loop(stop_event):
                 with state_lock:
                     state["latest_status"].update({
                         "timestamp": ts_str, "service": service_name,
-                        "emotion": emotion, "productivity": productivity_label
+                        "emotion": emotion, "productivity": productivity_label , "ocr": data.get('screen_content_ocr')
                     })
-
+                #ocr_content = data.get('screen_content_ocr')
                 print(f"[{ts_str}] Service: {service_name:<25} | Emotion: {emotion:<10} | PRODUCTIVITY: {productivity_label} {log_status}")
 
         except queue.Empty:
