@@ -1,0 +1,78 @@
+/* --- Main container for the inner chat view --- */
+.chatbot-container-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Make it fill the .chatbot-body */
+  background-color: #f9f9f9;
+}
+
+/* --- Area where messages are displayed --- */
+.messages-list {
+  flex-grow: 1; /* This is key: it takes up all available space */
+  overflow-y: auto; /* Adds a scrollbar if messages overflow */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* --- Individual message bubble styling --- */
+.message {
+  padding: 10px 15px;
+  border-radius: 18px;
+  max-width: 75%;
+  word-wrap: break-word;
+}
+
+.message.bot {
+  background-color: #EAEAEA;
+  color: #333;
+  align-self: flex-start; /* Aligns bot messages to the left */
+  border-bottom-left-radius: 4px;
+}
+
+.message.user {
+  background-color: var(--chatbot-primary);
+  color: var(--chatbot-light);
+  align-self: flex-end; /* Aligns user messages to the right */
+  border-bottom-right-radius: 4px;
+}
+
+/* --- Form for sending new messages --- */
+.message-form {
+  display: flex;
+  padding: 15px;
+  border-top: 1px solid #E0E0E0;
+  background-color: var(--chatbot-light);
+  flex-shrink: 0; /* Prevents the form from shrinking */
+}
+
+.message-form input {
+  flex-grow: 1;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  margin-right: 10px;
+}
+
+.message-form input:focus {
+  outline: none;
+  border-color: var(--chatbot-primary);
+}
+
+.message-form button {
+  background-color: var(--chatbot-primary);
+  color: var(--chatbot-light);
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.message-form button:hover {
+  background-color: #4A6999;
+}

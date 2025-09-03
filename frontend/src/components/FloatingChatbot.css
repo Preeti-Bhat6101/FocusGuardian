@@ -1,0 +1,99 @@
+:root {
+  --chatbot-primary: #5B7DB1;
+  --chatbot-light: #FFFFFF;
+  --chatbot-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --chatbot-transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.floating-chatbot-container {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 1000;
+}
+
+.chatbot-fab {
+  background: linear-gradient(45deg, var(--chatbot-primary), #7EC8A5);
+  color: var(--chatbot-light);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: var(--chatbot-shadow);
+  transition: var(--chatbot-transition);
+}
+
+.chatbot-fab:hover {
+  transform: scale(1.1);
+}
+
+.chatbot-window {
+  background-color: var(--chatbot-light);
+  border-radius: 16px;
+  box-shadow: var(--chatbot-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.chatbot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: var(--chatbot-primary);
+  color: var(--chatbot-light);
+  flex-shrink: 0;
+  cursor: move;
+  user-select: none;
+}
+
+.chatbot-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--chatbot-light);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px;
+  line-height: 1;
+  opacity: 0.8;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.close-btn:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+.chatbot-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 580px;
+  height: 90%;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.chatbot-body {
+  flex-grow: 1;         /* Allows this element to grow and fill the parent */
+  display: flex;
+  flex-direction: column;
+  min-height: 0;        /* THIS IS THE CRITICAL FIX for flexbox scaling */
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}

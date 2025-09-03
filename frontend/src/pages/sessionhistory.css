@@ -1,0 +1,247 @@
+/* src/pages/sessionhistory.css - ENHANCED COLOR & DEPTH */
+
+/* --- NEW: Richer Background --- */
+.session-history-page {
+  font-family: 'Poppins', sans-serif;
+  /* A subtle, multi-tone gradient that adds color without being distracting */
+  background: linear-gradient(135deg, #F0F5FF 0%, #FDFEFF 50%, #EFF7F5 100%);
+  color: #2D4357;
+  min-height: 100vh;
+}
+
+.session-history-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 2.5rem;
+}
+
+/* --- Header: Upgraded with softer glass effect --- */
+.session-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.session-history-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(45deg, #2D4357 0%, #5B7DB1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.back-button {
+  background: linear-gradient(45deg, #5B7DB1 0%, #7EC8A5 100%);
+  color: white;
+  padding: 0.8rem 1.8rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(92, 125, 177, 0.2);
+}
+.back-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(92, 125, 177, 0.3);
+}
+
+/* --- Section Headings --- */
+.session-section-heading {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 3rem 0 1.5rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+  color: #3d5c8b;
+}
+.session-section-heading::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 60%;
+  background: linear-gradient(180deg, #5B7DB1 0%, #7EC8A5 100%);
+  border-radius: 4px;
+}
+
+/* --- Chart Grid & NEW Enhanced Cards --- */
+.chart-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.chart-item {
+  background: #FFFFFF; /* Keep cards white for clarity */
+  padding: 1.5rem 2rem;
+  border-radius: 24px;
+  /* NEW: A softer, more pronounced shadow to lift the cards off the page */
+  box-shadow: 0 16px 40px rgba(112, 144, 176, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.5); /* A subtle border helps define the edge */
+}
+.chart-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(112, 144, 176, 0.3);
+}
+
+.chart-item h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: #2D4357;
+  text-align: center;
+}
+
+/* --- Grid Layouts for Responsiveness --- */
+.daily-analysis-section .chart-grid {
+  grid-template-columns: 1fr 1fr 1.5fr;
+}
+.session-trends-section .chart-grid {
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+@media (max-width: 1200px) {
+  .daily-analysis-section .chart-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 768px) {
+  .session-history-container { padding: 1.5rem; }
+  .session-history-header { flex-direction: column; gap: 1rem; }
+  .daily-analysis-section .chart-grid,
+  .session-trends-section .chart-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Detailed Log Table --- */
+.table-container {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+  padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+  backdrop-filter: blur(10px);
+  overflow-x: auto;
+}
+.flex-table { min-width: 800px; }
+.flex-header {
+  display: flex;
+  padding: 1rem 0.5rem;
+  border-bottom: 2px solid rgba(91, 125, 177, 0.2);
+}
+.flex-header .cell {
+  font-weight: 600;
+  color: #5B7DB1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.8rem;
+  text-align: left;
+}
+.flex-row {
+  display: flex;
+  align-items: center;
+  transition: all 0.25s ease;
+  border-bottom: 1px solid #eaf0f8;
+}
+.flex-row:hover {
+  background: rgba(126, 200, 165, 0.1);
+  transform: scale(1.01);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border-radius: 8px;
+}
+.flex-row.expanded { background: rgba(91, 125, 177, 0.08); }
+.flex-row .cell { padding: 1rem 0.5rem; text-align: left; white-space: nowrap; }
+.flex-header .cell, .flex-row .cell { flex: 1; }
+.flex-header .cell:nth-child(1), .flex-row .cell:nth-child(1) { flex-basis: 22%; }
+.flex-header .cell:nth-child(2), .flex-row .cell:nth-child(2) { flex-basis: 10%; }
+.flex-header .cell:nth-child(3), .flex-row .cell:nth-child(3) { flex-basis: 10%; }
+.flex-header .cell:nth-child(4), .flex-row .cell:nth-child(4) { flex-basis: 12%; }
+.flex-header .cell:nth-child(5), .flex-row .cell:nth-child(5) { flex-basis: 12%; }
+.flex-header .cell:nth-child(6), .flex-row .cell:nth-child(6) { flex-basis: 26%; }
+.flex-header .cell:nth-child(7), .flex-row .cell:nth-child(7) { flex-basis: 8%; text-align: center;}
+
+/* --- Inline Detail Expansion --- */
+.detail-row {
+  animation: fadeInDetail 0.4s ease-out;
+  background: #fdfdff;
+  border-bottom: 1px solid #eaf0f8;
+}
+.detail-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 1.5rem;
+}
+.detail-content h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2D4357;
+  border-bottom: 1px solid #dde4ee;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+@keyframes fadeInDetail {
+  from { opacity: 0; max-height: 0; transform: translateY(-10px); }
+  to { opacity: 1; max-height: 500px; transform: translateY(0); }
+}
+
+/* --- Pagination Controls --- */
+.pagination-controls { text-align: center; margin-top: 2rem; }
+.pagination-controls button {
+  background-color: #5B7DB1;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  margin: 0 0.5rem;
+}
+.pagination-controls button:hover:not(:disabled) {
+  background-color: #4a6b9b;
+  transform: translateY(-2px);
+}
+.pagination-controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* --- Loading & Error States --- */
+.loading-indicator, .loading-error { text-align: center; padding: 3rem; font-size: 1.2rem; }
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: #5B7DB1;
+}
+.loading-indicator::after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(91, 125, 177, 0.2);
+  border-top-color: #5B7DB1;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+.loading-error {
+  background: rgba(255, 210, 210, 0.6);
+  color: #D8000C;
+  border: 1px solid rgba(216, 0, 12, 0.2);
+  border-radius: 16px;
+  margin: 2rem 0;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
