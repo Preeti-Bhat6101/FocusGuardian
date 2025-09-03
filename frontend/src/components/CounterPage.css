@@ -1,0 +1,71 @@
+/* --- The Fix for White Corners --- */
+/* This makes the underlying page transparent, so only our component is visible. */
+html, body {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Base Body Styling --- */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* This makes the entire window draggable from anywhere. */
+  -webkit-app-region: drag;
+  /* This prevents the text from being selected when dragging. */
+  user-select: none;
+  /* This is a nice touch for smoother font rendering. */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Main Counter Container Styling --- */
+.counter-container {
+  box-sizing: border-box;
+  height: 100vh;
+  padding: 12px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+  /* --- Visuals --- */
+  color: white;
+  background-color: rgba(28, 28, 30, 0.85); /* Slightly darker, more modern color */
+  backdrop-filter: blur(12px); /* Stronger blur for a "glass" effect */
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 14px; /* A slightly larger radius looks softer */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for definition */
+  
+  /* --- Subtle Fade-in Animation --- */
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* --- Text Styling --- */
+.label {
+  font-size: 13px;
+  font-weight: 500; /* A bit bolder */
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px; /* More space between letters */
+}
+
+.time {
+  margin-top: 4px;
+  font-size: 28px;
+  font-weight: 600;
+  font-family: 'SF Mono', 'Courier New', monospace; /* Prioritize modern monospace fonts */
+  color: #34C759; /* A slightly brighter, more modern green */
+}
+
+/* --- Animation Definition --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
