@@ -1,0 +1,702 @@
+/* src/pages/sessionhistory.css - PREMIUM ENHANCEMENT */
+
+/* --- Enhanced Base Styling with Depth --- */
+.session-history-page {
+  font-family: 'Poppins', sans-serif;
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(123, 156, 219, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(126, 200, 165, 0.15) 0%, transparent 60%),
+    linear-gradient(135deg, #F0F5FF 0%, #FDFEFF 50%, #EFF7F5 100%);
+  color: #2D4357;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.session-history-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 300px;
+  background: linear-gradient(135deg, #9fb9f0 0%, #e1e7eb 50%, #93f4dc 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.session-history-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Premium Header with Enhanced Visuals --- */
+.session-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding: 2rem 2.5rem;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6),
+    0 0 40px rgba(91, 125, 177, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.session-history-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(91, 125, 177, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.session-history-header h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #2D4357 0%, #5B7DB1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(45, 67, 87, 0.1);
+  letter-spacing: -0.5px;
+}
+
+.back-button {
+  background: linear-gradient(135deg, #5B7DB1 0%, #7EC8A5 100%);
+  color: white;
+  padding: 1rem 2.2rem;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 6px 12px rgba(92, 125, 177, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.back-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+
+.back-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 10px 20px rgba(92, 125, 177, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.back-button:hover::before {
+  left: 100%;
+}
+
+/* --- Enhanced Section Headings --- */
+.session-section-heading {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 1rem 0 1rem 0;
+  position: relative;
+  padding-left: 2rem;
+  color: #3d5c8b;
+  text-shadow: 0 2px 4px rgba(45, 67, 87, 0.1);
+  letter-spacing: -0.5px;
+}
+
+.session-section-heading::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 70%;
+  background: linear-gradient(180deg, #5B7DB1 0%, #7EC8A5 100%);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(91, 125, 177, 0.4);
+}
+
+/* --- Premium Chart Cards with Depth --- */
+.chart-grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.chart-item {
+  background: #FFFFFF;
+  padding: 1rem 2rem;
+  border-radius: 24px;
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7),
+    0 5px 15px rgba(91, 125, 177, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.chart-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #5B7DB1, #7EC8A5);
+  opacity: 0.8;
+  border-radius: 5px 5px 0 0;
+}
+
+.chart-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+    0 8px 25px rgba(91, 125, 177, 0.15);
+}
+
+.chart-item h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  color: #2D4357;
+  text-align: center;
+  letter-spacing: -0.3px;
+  text-shadow: 0 1px 2px rgba(45, 67, 87, 0.1);
+}
+
+/* --- Grid Layouts --- */
+.daily-analysis-section .chart-grid {
+  grid-template-columns: 1fr 1fr 1.5fr;
+}
+
+.session-trends-section .chart-grid {
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+}
+
+@media (max-width: 1200px) {
+  .daily-analysis-section .chart-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .session-history-container {
+    padding: 1.5rem;
+  }
+  
+  .session-history-header {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  
+  .session-history-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .daily-analysis-section .chart-grid,
+  .session-trends-section .chart-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .session-section-heading {
+    font-size: 2rem;
+    padding-left: 1.5rem;
+  }
+  
+  .chart-item {
+    padding: 1.8rem;
+  }
+}
+
+/* --- Premium Table Design --- */
+.table-container {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  padding: 1rem 1.5rem 2rem;
+  backdrop-filter: blur(12px);
+  overflow-x: auto;
+  margin-top: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.flex-table {
+  min-width: 900px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.flex-header {
+  display: flex;
+  padding: 1.4rem 0.8rem;
+  background: linear-gradient(135deg, rgba(91, 125, 177, 0.08) 0%, rgba(126, 200, 165, 0.08) 100%);
+  border-radius: 14px 14px 0 0;
+  position: relative;
+  backdrop-filter: blur(5px);
+}
+
+.flex-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0.8rem;
+  right: 0.8rem;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(91, 125, 177, 0.3), transparent);
+}
+
+.flex-header .cell {
+  font-weight: 700;
+  color: #5B7DB1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.85rem;
+  text-align: left;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.flex-row {
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  margin: 0.4rem 0;
+  position: relative;
+}
+
+.flex-row:hover {
+  background: linear-gradient(135deg, rgba(91, 125, 177, 0.08) 0%, rgba(126, 200, 165, 0.08) 100%);
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.flex-row.expanded {
+  background: rgba(91, 125, 177, 0.06);
+  box-shadow: inset 4px 0 0 #5B7DB1;
+}
+
+.flex-row .cell {
+  padding: 1.2rem 0.8rem;
+  text-align: left;
+  white-space: nowrap;
+  color: #475569;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.flex-header .cell, .flex-row .cell {
+  flex: 1;
+}
+
+.flex-header .cell:nth-child(1), .flex-row .cell:nth-child(1) {
+  flex-basis: 22%;
+  color: #2D4357;
+  font-weight: 600;
+}
+
+.flex-header .cell:nth-child(2), .flex-row .cell:nth-child(2) {
+  flex-basis: 10%;
+  color: #5B7DB1;
+  font-weight: 600;
+}
+
+.flex-header .cell:nth-child(3), .flex-row .cell:nth-child(3) {
+  flex-basis: 10%;
+  font-weight: 700;
+  color: #2a9d8f;
+}
+
+.flex-header .cell:nth-child(4), .flex-row .cell:nth-child(4) {
+  flex-basis: 12%;
+}
+
+.flex-header .cell:nth-child(5), .flex-row .cell:nth-child(5) {
+  flex-basis: 12%;
+  color: #e76f51;
+}
+
+.flex-header .cell:nth-child(6), .flex-row .cell:nth-child(6) {
+  flex-basis: 26%;
+}
+
+.flex-header .cell:nth-child(7), .flex-row .cell:nth-child(7) {
+  flex-basis: 8%;
+  text-align: center;
+}
+
+/* --- Enhanced Detail Expansion --- */
+.detail-row {
+  animation: fadeInDetail 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  background: rgba(248, 250, 252, 0.7);
+  border-radius: 0 0 14px 14px;
+  margin: 0 0 1rem 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-top: none;
+}
+
+.detail-content {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2.5rem;
+  padding: 2.2rem;
+}
+
+.detail-content h4 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2D4357;
+  border-bottom: 2px solid rgba(91, 125, 177, 0.2);
+  padding-bottom: 0.8rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.3px;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.detail-content p {
+  margin-bottom: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.detail-content p strong {
+  min-width: 130px;
+  color: #5B7DB1;
+  font-weight: 600;
+}
+
+@keyframes fadeInDetail {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+    transform: translateY(0);
+  }
+}
+
+/* --- Enhanced Pagination --- */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  gap: 1.2rem;
+}
+
+.pagination-controls button {
+  background: linear-gradient(135deg, #5B7DB1 0%, #7EC8A5 100%);
+  color: white;
+  border: none;
+  padding: 0.9rem 1.8rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 5px 10px rgba(92, 125, 177, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.pagination-controls button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 8px 15px rgba(92, 125, 177, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.pagination-controls button:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.pagination-controls span {
+  font-weight: 600;
+  color: #5B7DB1;
+  padding: 0 1rem;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+/* --- Enhanced Loading States --- */
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  font-size: 1.3rem;
+  color: #5B7DB1;
+  gap: 1.2rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  margin: 2rem 0;
+}
+
+.loading-indicator::after {
+  content: '';
+  width: 28px;
+  height: 28px;
+  border: 3px solid rgba(91, 125, 177, 0.2);
+  border-top-color: #5B7DB1;
+  border-radius: 50%;
+  animation: spin 1.2s cubic-bezier(0.5, 0.1, 0.5, 0.9) infinite;
+}
+
+.loading-error {
+  background: rgba(254, 226, 226, 0.6);
+  color: #dc2626;
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: 16px;
+  margin: 2rem 0;
+  padding: 1.8rem;
+  text-align: center;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(220, 38, 38, 0.1);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Micro-interactions and Finishing Touches --- */
+.flex-row .cell.duration {
+  font-weight: 700;
+  color: #5B7DB1;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.flex-row .cell.duration::before {
+  content: '⏱';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.7;
+}
+
+.flex-row .cell.actions button {
+  background: transparent;
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  color: #5B7DB1;
+  box-shadow: 0 2px 6px rgba(91, 125, 177, 0.2);
+}
+
+.flex-row .cell.actions button:hover {
+  background: rgba(91, 125, 177, 0.1);
+  transform: scale(1.15);
+  box-shadow: 0 4px 10px rgba(91, 125, 177, 0.3);
+}
+
+/* Animation for chart cards on scroll */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chart-item {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.chart-item:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.chart-item:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+/* Subtle background pattern */
+.session-history-page::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(91, 125, 177, 0.03) 0%, transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(126, 200, 165, 0.03) 0%, transparent 25%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.daily-analysis-section{
+    padding: 20px;
+}
+
+.detailed-log-section{
+    padding: 30px;
+}
+
+.flex-row:nth-child(even) {
+  background-color: rgba(240, 245, 255, 0.6);
+}
+
+.flex-row:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Hover effects that work with the alternating colors */
+.flex-row:hover {
+  background: linear-gradient(135deg, rgba(91, 125, 177, 0.15) 0%, rgba(126, 200, 165, 0.15) 100%) !important;
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+}
+
+/* Ensure expanded rows maintain their styling */
+.flex-row.expanded {
+  background: rgba(91, 125, 177, 0.1) !important;
+  box-shadow: inset 3px 0 0 #5B7DB1;
+}
+
+/* Header row styling to distinguish from data rows */
+.flex-header {
+  background: linear-gradient(135deg, rgba(91, 125, 177, 0.2) 0%, rgba(126, 200, 165, 0.2) 100%) !important;
+  border-bottom: 2px solid rgba(91, 125, 177, 0.3);
+}
+
+/* Add subtle transition for smooth color changes */
+.flex-row {
+  transition: all 0.25s ease;
+}
+
+/* Detail row styling */
+.detail-row {
+  background: rgba(248, 250, 252, 0.9) !important;
+}
+
+/* If you want to add zebra striping to the detail content as well */
+.detail-content p:nth-child(even) {
+  background-color: rgba(240, 245, 255, 0.3);
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* Enhanced alternating rows with better visual design */
+
+.flex-row {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 6px;
+  margin: 0.2rem 0;
+}
+
+.flex-row:nth-child(even) {
+  background: linear-gradient(90deg, rgba(240, 245, 255, 0.7) 0%, rgba(240, 245, 255, 0.4) 100%);
+  border-left: 3px solid rgba(91, 125, 177, 0.3);
+}
+
+.flex-row:nth-child(odd) {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.6) 100%);
+  border-left: 3px solid rgba(126, 200, 165, 0.3);
+}
+
+.flex-row:hover {
+  background: linear-gradient(135deg, rgba(91, 125, 177, 0.2) 0%, rgba(126, 200, 165, 0.2) 100%) !important;
+  transform: translateX(8px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.flex-row.expanded {
+  background: linear-gradient(135deg, rgba(91, 125, 177, 0.15) 0%, rgba(91, 125, 177, 0.25) 100%) !important;
+  box-shadow: inset 4px 0 0 #5B7DB1, 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.flex-header {
+  background: linear-gradient(135deg, rgba(91, 125, 177, 0.25) 0%, rgba(126, 200, 165, 0.25) 100%) !important;
+  border-bottom: 2px solid rgba(91, 125, 177, 0.4);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 8px 8px 0 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Add subtle animation when rows are expanded */
+.detail-row {
+  animation: expandRow 0.4s ease-out;
+  background: linear-gradient(135deg, rgba(248, 250, 252, 0.9) 0%, rgba(240, 245, 255, 0.9) 100%) !important;
+  border-radius: 0 0 8px 8px;
+  margin-top: -0.2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+@keyframes expandRow {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+    transform: translateY(0);
+  }
+}
+
+/* Style for the table container to complement the new row design */
+.table-container {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  padding: 1rem 1.5rem 2rem;
+  backdrop-filter: blur(12px);
+  overflow-x: auto;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+

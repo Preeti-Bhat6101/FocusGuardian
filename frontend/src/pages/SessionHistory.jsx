@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import './sessionhistory.css';
+import './sessionhistory2.css';
 
 // --- Import Specific Chart Components ---
 import DailyFocusTimeChart from '../components/charts/DailyFocusTimeChart';
