@@ -23,9 +23,15 @@
   
   /* Main Container */
   .dashboard-container {
-    max-width: 1200px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap:2rem;
+    max-width: 1500px;
     margin: 0 auto;
     padding: 2rem 1.5rem;
+    min-height:660px;
   }
   
   /* Header */
@@ -34,8 +40,11 @@
     justify-content: space-between;
     align-items: center;
     padding-bottom: 1.5rem;
-    margin-bottom: 2rem;
     border-bottom: 2px solid rgba(91, 125, 177, 0.1);
+    gap:1rem;
+    width: 100%;         
+    max-width: 1300px; 
+    margin: 0 auto;  
   }
   
   .dashboard-header h1 {
@@ -61,12 +70,14 @@
     border: 1px solid rgba(91, 125, 177, 0.1);
     border-radius: var(--radius);
     padding: 2rem;
-    margin-bottom: 2rem;
     box-shadow: var(--shadow);
     border-left: 4px solid var(--clr-primary);
     position: relative;
     overflow: hidden;
     transition: var(--transition);
+    width: 100%;          
+    max-width: 1300px;   
+    margin: 0 auto;  
   }
   
   .session-card::after {

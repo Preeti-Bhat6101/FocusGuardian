@@ -43,14 +43,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 1.4rem;
 }
 
 .register-form {
   width: 100%;
   max-width: 600px;
-  background: var(--light);
-  padding: 2.5rem;
+  background: linear-gradient(180deg,
+    rgba(175, 237, 210, 0.95),
+    rgba(164, 188, 235, 0.903)
+  );    
+  padding: 2.2rem;
   border-radius: 1.5rem;
   box-shadow: var(--shadow-lg);
   border-left: 4px solid var(--primary);
