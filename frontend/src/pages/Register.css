@@ -35,7 +35,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background:linear-gradient(135deg, rgba(244, 233, 217, 0.98) 0%, rgba(255,254,252,0.98) 100%);
+  background: linear-gradient(135deg, #9fb9f0 0%, #FDFEFF 50%, #93f4dc 100%);
 }
 
 .register-main {

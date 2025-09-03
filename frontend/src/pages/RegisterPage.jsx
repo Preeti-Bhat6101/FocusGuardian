@@ -63,7 +63,7 @@ function RegisterPage() {
 
   return (
     <div className="register-page">
-      <Navbar />
+      <Navbar/>
       <main className="register-main">
         <form onSubmit={handleRegisterSubmit} className="register-form">
           <div className="form-header">
