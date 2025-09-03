@@ -3,10 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
 import styles from './Chatbot.module.css';
-// import { createParser } from 'eventsource-parser';
 const API_URL = process.env.REACT_APP_API_BASE_URL;
-
-// Basic styling (consider moving to a CSS file or styled-components)
 
 const fallbackBgColor = '#ffffff'; 
 function Chatbot() {

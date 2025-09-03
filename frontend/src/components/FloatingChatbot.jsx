@@ -5,7 +5,7 @@ import { Rnd } from 'react-rnd';
 import './FloatingChatbot.css';
 
 // --- Define initial dimensions here ---
-const INITIAL_SIZE = { width: 370, height: 540 };
+const INITIAL_SIZE = { width: 430, height: 540 };
 
 function FloatingChatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +48,7 @@ function FloatingChatbot() {
         });
         setPosition(newPosition);
       }}
-      minWidth={300}
+      minWidth={420}
       // --- Use the initial height as the minimum height ---
       minHeight={INITIAL_SIZE.height}
       bounds="window"
