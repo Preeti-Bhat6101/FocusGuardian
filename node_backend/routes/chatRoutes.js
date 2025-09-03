@@ -1,17 +1,17 @@
-// const express = require('express');
-// const { handleChatMessage } = require('../controllers/chatController'); // Create this controller
+// routes/chatRoutes.js
+const express = require('express');
+const router = express.Router();
+const protect = require('../middleware/authMiddleware');
 
-// const router = express.Router();
+const {
+    handleChatMessage,
+    getChatHistory
+} = require('../controllers/chatController');
 
-// // Import the authentication middleware
-// // Make sure the path '../middleware/authMiddleware' is correct for your project structure
-// const protect = require('../middleware/authMiddleware');
+// All chat routes are protected
+router.use(protect);
 
-// // Define the route for handling chat messages
-// // POST request to the root of this router (which will be mounted at /api/chat)
-// // It first runs 'protect' to ensure the user is logged in,
-// // then it runs 'handleChatMessage' to process the request.
-// router.post('/', protect, handleChatMessage);
+router.post('/converse', handleChatMessage);
+router.get('/history', getChatHistory);
 
-// // Export the router so it can be used in your main server file
-// module.exports = router;
+module.exports = router;
