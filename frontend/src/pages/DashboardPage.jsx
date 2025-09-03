@@ -247,7 +247,7 @@ const [engineState, setEngineState] = useState(engineManager.getState());
 
   return (
     <div className="dashboard-page">
-      <Navbar />
+      <Navbar hideLoginButton={true}/>
       <div className="dashboard-container">
         <header className="dashboard-header">
           <h1>Focus Guardian Dashboard</h1>
