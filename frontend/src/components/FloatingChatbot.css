@@ -66,33 +66,44 @@
   color: var(--chatbot-light);
   font-size: 20px;
   cursor: pointer;
-  padding: 5px;
-  line-height: 1;
+  width: 36px; 
+  height: 36px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1; /* Ensures vertical alignment of the icon */
   opacity: 0.8;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease, opacity 0.2s ease, transform 0.2s ease, border-radius 0.2s ease;
+  border-radius: 50%; /* Make the button itself circular for consistent hover */
 }
 
 .close-btn:hover {
   opacity: 1;
+  background-color: rgba(255, 255, 255, 0.2); 
+}
+
+.close-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.close-btn svg {
+  transition: transform 0.2s ease; 
+}
+
+.close-btn:hover svg,
+.close-btn:focus svg {
   transform: rotate(90deg);
 }
+
 
 .chatbot-body {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  min-height: 580px;
   height: 90%;
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-}
-
-.chatbot-body {
-  flex-grow: 1;         /* Allows this element to grow and fill the parent */
-  display: flex;
-  flex-direction: column;
-  min-height: 0;        /* THIS IS THE CRITICAL FIX for flexbox scaling */
+  min-height:0;
   border: none;
   box-shadow: none;
   border-radius: 0;
