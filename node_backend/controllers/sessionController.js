@@ -44,32 +44,41 @@ exports.startSession = async (req, res) => {
 // @access  Private
 exports.processSessionData = async (req, res) => {
     const { sessionId } = req.params;
-    const userId = req.user.id;
+    const userId = req.user.id; // Assuming your 'protect' middleware adds the user to req
 
     const { focus, appName, activity } = req.body;
-    if (typeof focus !== 'boolean' || !appName || !activity) {
+
+    // Basic validation for the incoming payload
+    if (typeof focus !== 'boolean' || !appName || typeof activity === 'undefined') {
         return res.status(400).json({ message: 'Invalid analysis data payload.' });
     }
 
     try {
+        // Find the active session for the user
         const session = await Session.findOne({
              _id: new mongoose.Types.ObjectId(sessionId),
              userId: new mongoose.Types.ObjectId(userId),
-             endTime: null
+             endTime: null // Ensure we're only updating an active session
         });
 
         if (!session) {
+            // This is an important message for the local engine if it keeps sending data after a session has stopped
             return res.status(404).json({ message: 'Active session not found. Please stop monitoring.' });
         }
         
+        // Find the corresponding user to update their lifetime stats
         const user = await User.findById(userId);
         if (!user) {
             return res.status(404).json({ message: 'User associated with session not found.' });
         }
         
+        // --- Data Processing and Updates ---
+        
         const timeIncrement = ANALYSIS_INTERVAL_SECONDS;
+        // Sanitize the appName to be a valid key for the Mongoose Map
         const sanitizedAppName = appName.replace(/\./g, '_').replace(/^\$/, '_$');
 
+        // Update focus/distraction times
         if (focus) {
             session.focusTime += timeIncrement;
             user.totalFocusTime += timeIncrement;
@@ -78,14 +87,35 @@ exports.processSessionData = async (req, res) => {
             user.totalDistractionTime += timeIncrement;
         }
         
+        // Update app usage stats for both the session and the user's lifetime
         session.appUsage.set(sanitizedAppName, (session.appUsage.get(sanitizedAppName) || 0) + timeIncrement);
-        session.markModified('appUsage');
         user.appUsage.set(sanitizedAppName, (user.appUsage.get(sanitizedAppName) || 0) + timeIncrement);
-        user.markModified('appUsage');
         
+        // Update the 'latestActivity' object for the live feed feature
+        session.latestActivity = {
+            service: appName, // Use the original appName for display purposes
+            productivity: focus ? "Productive" : "Unproductive",
+            reason: activity,
+            timestamp: new Date(),
+        };
+
+        // --- Mongoose Change Tracking ---
+        
+        // Explicitly tell Mongoose that these nested/Map fields have been modified.
+        // This is crucial for ensuring the changes are saved to the database.
+        session.markModified('appUsage');
+        user.markModified('appUsage');
+        session.markModified('latestActivity'); // <-- THE CRITICAL FIX
+        
+        // --- Database Save Operation ---
+        
+        // Save both documents concurrently for better performance
         await Promise.all([session.save(), user.save()]);
         
+        // Log to the console for successful debugging
         console.log(`[Session ${sessionId}] DB Updated via Python: focus=${focus}, app=${sanitizedAppName}`);
+        
+        // Send a success response
         res.status(200).json({ message: 'Data point processed successfully.' });
 
     } catch (error) {
@@ -280,5 +310,31 @@ exports.activateSession = asyncHandler(async (req, res) => {
     } catch (error) {
         console.error(`Error activating session ${sessionId}:`, error);
         res.status(500).json({ message: 'Server error activating session' });
+    }
+});
+
+exports.getLiveStatus = asyncHandler(async (req, res) => {
+    const session = await Session.findOne({ userId: req.user.id, endTime: null });
+    
+    if (!session) {
+        // This is a valid state, but the frontend expects a 404. Let's keep it.
+        return res.status(404).json({ message: 'No active session found' });
+    }
+
+    // --- THE FIX IS HERE ---
+    // Check if the latestActivity field exists and has content.
+    // The 'service' property is a good indicator that it has been written to.
+    if (session.latestActivity && session.latestActivity.service) {
+        // If it has real data, send it.
+        return res.status(200).json(session.latestActivity);
+    } else {
+        // If it's empty or just has the default values, send a clear "initializing" status.
+        // This ensures the frontend ALWAYS receives a valid JSON object.
+        return res.status(200).json({
+            service: "Initializing...",
+            productivity: "Analyzing...",
+            reason: "Waiting for first data point...",
+            timestamp: new Date(), // Give a current timestamp
+        });
     }
 });
