@@ -205,7 +205,7 @@ function SessionHistoryPage() {
     
     return (
         <div className="session-history-page">
-          <Navbar />
+          <Navbar hideLoginButton={true}/>
           <div className="session-history-container">
     
             <div className="session-history-header">

@@ -3,10 +3,7 @@
 /* --- Enhanced Base Styling with Depth --- */
 .session-history-page {
   font-family: 'Poppins', sans-serif;
-  background: 
-    radial-gradient(ellipse at 20% 20%, rgba(123, 156, 219, 0.15) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 80%, rgba(126, 200, 165, 0.15) 0%, transparent 60%),
-    linear-gradient(135deg, #F0F5FF 0%, #FDFEFF 50%, #EFF7F5 100%);
+  background: linear-gradient(135deg, #9fb9f0 0%, #e1e7eb 50%, #93f4dc 100%);
   color: #2D4357;
   min-height: 100vh;
   position: relative;
@@ -20,7 +17,6 @@
   left: 0;
   right: 0;
   height: 300px;
-  background: linear-gradient(135deg, #9fb9f0 0%, #e1e7eb 50%, #93f4dc 100%);
   pointer-events: none;
   z-index: 0;
 }
